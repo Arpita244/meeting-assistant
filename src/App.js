@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import SpeechToText from "./SpeechToText";
 import { extractActions } from "./TextProcessor";
 
-const App = () => {
-  const [notes, setNotes] = useState([]);
+function App() {
+  const [transcript, setTranscript] = useState("");
+  const [meetingNotes, setMeetingNotes] = useState({ tasks: [], date: "", time: "" });
 
-  const saveNote = (transcribedText) => {
-    let extractedData = extractActions(transcribedText);
-    setNotes([...notes, extractedData]);
+  const handleTranscriptUpdate = (newTranscript) => {
+    setTranscript(newTranscript);
+    const extractedData = extractActions(newTranscript);
+    setMeetingNotes(extractedData);
   };
 
   const downloadNotes = () => {
@@ -24,27 +26,18 @@ const App = () => {
     link.click();
     document.body.removeChild(link);
   };
-
+  
   return (
-    <div style={{ padding: "20px", maxWidth: "600px", margin: "auto" }}>
-      <h2>Meeting Assistant</h2>
-      <SpeechToText onSave={saveNote} />
-
-      <h3>Meeting Notes</h3>
-      <ul>
-        {notes.map((note, index) => (
-          <li key={index} style={{ padding: "10px", borderBottom: "1px solid #ddd" }}>
-            <p><strong>Task:</strong> {note.tasks.length > 0 ? note.tasks.join(", ") : "None"}</p>
-            <p><strong>Date:</strong> {note.date || "Not Found"}</p>
-            <p><strong>Time:</strong> {note.time || "Not Found"}</p>
-          </li>
-        ))}
-      </ul>
-      <button onClick={downloadNotes} style={{ padding: "10px 20px", marginTop: "10px", fontSize: "16px" }}>
-  Download Notes
-</button>
+    <div style={{ textAlign: "center", padding: "20px" }}>
+      <h1>Meeting Assistant</h1>
+      <SpeechToText onTranscriptChange={handleTranscriptUpdate} />
+      <h2>Meeting Notes</h2>
+      <p><strong>Task:</strong> {meetingNotes.tasks.join(", ")}</p>
+      <p><strong>Date:</strong> {meetingNotes.date}</p>
+      <p><strong>Time:</strong> {meetingNotes.time}</p>
+      
     </div>
   );
-};
+}
 
 export default App;

@@ -1,35 +1,42 @@
 import React, { useState } from "react";
 
-const SpeechToText = ({ onSave }) => {
-  const [text, setText] = useState("");
-  const [isListening, setIsListening] = useState(false);
-  const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-
-  recognition.continuous = true;
-  recognition.lang = "en-US";
-
-  recognition.onresult = (event) => {
-    const lastTranscript = event.results[event.results.length - 1][0].transcript;
-    setText((prev) => prev + " " + lastTranscript);
-  };
+const SpeechToText = ({ onTranscriptChange }) => {
+  const [isRecording, setIsRecording] = useState(false);
+  const [transcript, setTranscript] = useState("");
 
   const startListening = () => {
-    setIsListening(true);
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = "en-US";
+    recognition.interimResults = false;
+    recognition.continuous = false;
+
+    recognition.onstart = () => {
+      setIsRecording(true);
+    };
+
+    recognition.onresult = (event) => {
+      const speechText = event.results[0][0].transcript;
+      setTranscript(speechText);
+      onTranscriptChange(speechText);
+    };
+
+    recognition.onerror = (event) => {
+      console.error("Speech Recognition Error:", event.error);
+    };
+
+    recognition.onend = () => {
+      setIsRecording(false);
+    };
+
     recognition.start();
   };
 
-  const stopListening = () => {
-    setIsListening(false);
-    recognition.stop();
-    onSave(text);
-  };
-
   return (
-    <div style={{ padding: "20px", textAlign: "center" }}>
-      <button onClick={isListening ? stopListening : startListening} style={{ padding: "10px 20px", fontSize: "16px" }}>
-        {isListening ? "Stop Recording" : "Start Recording"}
+    <div>
+      <button onClick={startListening} disabled={isRecording}>
+        {isRecording ? "Recording..." : "Start Recording"}
       </button>
-      <p>{text}</p>
+      <p><strong>Transcript:</strong> {transcript}</p>
     </div>
   );
 };
