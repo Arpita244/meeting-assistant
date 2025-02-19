@@ -1,38 +1,86 @@
-.App {
+/* 🌟 General Styling */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f7fc;
+  color: #333;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* 🌟 Main Container */
+.container {
+  max-width: 600px;
+  margin: 30px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* 🎙 Title */
+h1 {
+  font-size: 26px;
+  color: #2c3e50;
+  margin-bottom: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* 📝 Meeting Notes Section */
+.meeting-notes {
+  text-align: left;
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+
+.meeting-notes p {
+  font-size: 16px;
+  margin: 8px 0;
+}
+
+.meeting-notes strong {
+  color: #2980b9;
+}
+
+/* 🎙 Buttons */
+button {
+  background: #2980b9;
   color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: 0.3s;
 }
 
-.App-link {
-  color: #61dafb;
+button:hover {
+  background: #1c5d91;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* 🔄 Loading or Processing Status */
+.status {
+  font-size: 14px;
+  color: #777;
+  margin-top: 5px;
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 600px) {
+  .container {
+    width: 90%;
+    padding: 15px;
   }
-  to {
-    transform: rotate(360deg);
+
+  h1 {
+    font-size: 22px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 10px 12px;
   }
 }
