@@ -1,6 +1,6 @@
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #E3FDFD, #CBF1F5);
+  background: linear-gradient(135deg, #F4F6F9, #D7DBE0);
   color: #333;
   text-align: center;
   margin: 0;
@@ -10,17 +10,17 @@ body {
 .container {
   max-width: 850px;
   margin: 40px auto;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.9);
   padding: 40px;
   border-radius: 20px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
-  backdrop-filter: blur(15px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(20px);
   transition: all 0.3s ease-in-out;
 }
 
 h1 {
-  font-size: 38px;
-  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  font-size: 42px;
+  background: linear-gradient(90deg, #4A90E2, #1C3D5A);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: bold;
@@ -32,14 +32,15 @@ h1 {
   font-size: 20px;
   margin: 14px 0;
   font-weight: 500;
+  color: #2C3E50;
 }
 
 .meeting-notes strong {
-  color: #6a11cb;
+  color: #4A90E2;
 }
 
 button {
-  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  background: linear-gradient(135deg, #34495E, #2C3E50);
   color: white;
   padding: 16px 24px;
   font-size: 18px;
@@ -49,13 +50,13 @@ button {
   cursor: pointer;
   margin-top: 20px;
   transition: all 0.3s ease-in-out;
-  box-shadow: 0 5px 15px rgba(255, 75, 43, 0.3);
+  box-shadow: 0 5px 15px rgba(44, 62, 80, 0.3);
 }
 
 button:hover {
-  background: linear-gradient(135deg, #ff4b2b, #ff416c);
+  background: linear-gradient(135deg, #2C3E50, #34495E);
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(255, 75, 43, 0.4);
+  box-shadow: 0 10px 20px rgba(44, 62, 80, 0.4);
 }
 
 .calendar-container {
@@ -69,7 +70,7 @@ button:hover {
   width: 100%;
   max-width: 480px;
   border-radius: 15px;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
   color: #333;
   font-weight: bold;
@@ -84,18 +85,18 @@ button:hover {
 }
 
 .react-calendar__tile--active {
-  background: linear-gradient(135deg, #66A6FF, #3B8D99);
+  background: linear-gradient(135deg, #4A90E2, #1C3D5A);
   color: white;
   border-radius: 12px;
 }
 
 .react-calendar__tile:hover {
-  background: rgba(102, 166, 255, 0.3);
+  background: rgba(74, 144, 226, 0.3);
   border-radius: 12px;
 }
 
 .react-calendar__navigation button {
-  color: #333;
+  color: #2C3E50;
   font-weight: bold;
   font-size: 16px;
 }
@@ -111,7 +112,7 @@ button:hover {
     padding: 30px;
   }
   h1 {
-    font-size: 30px;
+    font-size: 34px;
   }
   button {
     font-size: 16px;
@@ -124,7 +125,7 @@ button:hover {
     padding: 25px;
   }
   h1 {
-    font-size: 26px;
+    font-size: 28px;
   }
   button {
     font-size: 14px;
