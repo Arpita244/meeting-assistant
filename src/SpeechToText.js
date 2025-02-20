@@ -1,8 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const SpeechToText = ({ onTranscriptChange }) => {
   const [isRecording, setIsRecording] = useState(false);
   const [transcript, setTranscript] = useState("");
+
+  useEffect(() => {
+    
+    const savedTranscript = localStorage.getItem("meetingTranscript");
+    if (savedTranscript) {
+      setTranscript(savedTranscript);
+      onTranscriptChange(savedTranscript);
+    }
+  }, [onTranscriptChange]);
 
   const startListening = () => {
     const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
@@ -18,6 +27,7 @@ const SpeechToText = ({ onTranscriptChange }) => {
       const speechText = event.results[0][0].transcript;
       setTranscript(speechText);
       onTranscriptChange(speechText);
+      localStorage.setItem("meetingTranscript", speechText); 
     };
 
     recognition.onerror = (event) => {
@@ -31,11 +41,18 @@ const SpeechToText = ({ onTranscriptChange }) => {
     recognition.start();
   };
 
+  const clearTranscript = () => {
+    setTranscript("");
+    localStorage.removeItem("meetingTranscript"); 
+    onTranscriptChange("");
+  };
+
   return (
     <div>
       <button onClick={startListening} disabled={isRecording}>
         {isRecording ? "Recording..." : "Start Recording"}
       </button>
+      <button onClick={clearTranscript} style={{ marginLeft: "10px" }}>Clear</button>
       <p><strong>Transcript:</strong> {transcript}</p>
     </div>
   );
