@@ -9,7 +9,12 @@ function App() {
   const [transcript, setTranscript] = useState("");
   const [meetingNotes, setMeetingNotes] = useState({ tasks: [], date: "", time: "", summary: "" });
   const [selectedDate, setSelectedDate] = useState(new Date());
-  
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    loadCalendarEvents();
+  }, []);
+
   useEffect(() => {
     const formattedDate = selectedDate.toLocaleDateString("en-CA");
     const savedNotes = JSON.parse(localStorage.getItem(formattedDate));
@@ -19,18 +24,25 @@ function App() {
       setMeetingNotes({ tasks: [], date: formattedDate, time: "", summary: "" });
     }
   }, [selectedDate]);
-  
+
+  const loadCalendarEvents = () => {
+    const storedEvents = Object.keys(localStorage).filter((key) => !isNaN(new Date(key).getTime()));
+    setEvents(storedEvents);
+  };
+
   const handleTranscriptUpdate = (newTranscript) => {
     setTranscript(newTranscript);
     const extractedData = extractActions(newTranscript);
     extractedData.date = selectedDate.toLocaleDateString("en-CA");
     setMeetingNotes(extractedData);
     localStorage.setItem(extractedData.date, JSON.stringify(extractedData));
+    loadCalendarEvents();
   };
-  
+
   const deleteMeetingNotesByDate = () => {
     localStorage.removeItem(selectedDate.toLocaleDateString("en-CA"));
     setMeetingNotes({ tasks: [], date: selectedDate.toLocaleDateString("en-CA"), time: "", summary: "" });
+    loadCalendarEvents();
   };
 
   const downloadNotes = () => {
@@ -56,7 +68,11 @@ function App() {
     <div style={{ textAlign: "center", padding: "20px" }}>
       <h1>Smart Voice Assistant</h1>
       <div style={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
-        <Calendar onChange={setSelectedDate} value={selectedDate} tileContent={() => null} />
+        <Calendar 
+          onChange={setSelectedDate} 
+          value={selectedDate} 
+          tileClassName={({ date }) => events.includes(date.toLocaleDateString("en-CA")) ? "highlight" : ""}
+        />
       </div>
       <SpeechToText onTranscriptChange={handleTranscriptUpdate} />
       <h2>Meeting Notes</h2>
