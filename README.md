@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+# 📌 Smart Voice Assistant
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🎯 Project Overview
+Smart Voice Assistant is a mobile application designed for professionals to enhance meeting productivity. It records conversations, transcribes them to text, extracts action items, and converts them into tasks, calendar events, or meeting notes. The app provides a simple and intuitive UI for seamless interaction.
 
-## Available Scripts
+## ✨ Features
+- 🎙 **Real-time Voice Transcription**: Converts speech into text accurately.
+- ✅ **Action Item Extraction**: Identifies key points and actionable tasks.
+- 📝 **Task & Event Creation**: Converts action items into tasks and calendar events.
+- 🔄 **Local Storage & Firebase Integration**: Data is initially stored locally and later synced with Firebase.
+- 🌙 **Dark Mode Support**: Provides a user-friendly interface for all lighting conditions.
 
-In the project directory, you can run:
+## 🛠 Tech Stack
+- **Frontend:** React Native
+- **Backend:** Firebase (for data storage & authentication)
+- **Speech Processing:** Web Speech API / Google Speech-to-Text API
+- **Storage:** Local Storage & Firebase Firestore
 
-### `npm start`
+## 📂 Project Structure
+```
+📦 SmartVoiceAssistant
+├── 📂 src
+│   ├── 📂 components  # Reusable UI components
+│   ├── 📂 screens     # App screens (Home, Notes, Tasks, Settings)
+│   ├── 📂 utils       # Utility functions (speech recognition, data handling)
+│   ├── 📂 assets      # Images and icons
+│   ├── App.js        # Main entry file
+│   ├── index.js      # Root file
+├── 📜 README.md       # Project documentation
+├── 📜 package.json    # Dependencies and scripts
+├── 📜 .gitignore      # Files to ignore in version control
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🚀 Installation & Setup
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/your-username/smart-voice-assistant.git
+   cd smart-voice-assistant
+   ```
+2. **Install dependencies:**
+   ```sh
+   npm install
+   ```
+3. **Start the application:**
+   ```sh
+   npm start
+   ```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📌 Usage Guide
+1. Open the app and start a new recording.
+2. Speak naturally, and the app will transcribe in real-time.
+3. View extracted action items and save them as tasks or events.
+4. Sync your data with Firebase for cloud storage.
+5. Access saved notes and tasks anytime from the app.
 
-### `npm test`
+## 📸 Screenshots
+> _[![Screenshot (139)](https://github.com/user-attachments/assets/a4e3c5d9-415d-44f0-a6ad-f2938185652d)
+]_  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🛠 Future Enhancements
+- AI-powered summarization of conversations.
+- Multi-language support for global users.
+- Integration with Google Calendar & Microsoft Outlook.
+- Advanced filtering & searching capabilities.
 
-### `npm run build`
+## 🌐 Live Demo
+🔗 [Live Application](https://meeting-assistant-sable.vercel.app/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🎥 Demo Video
+📺 [Watch Demo](https://drive.google.com/file/d/12-l0FZSl8dpqKQU4I39paS24OOZReTK2/view?usp=sharing)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
